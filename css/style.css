@@ -1,0 +1,56 @@
+body,html{
+    font-family:courier,arial,helvetica;
+    overflow: none;
+    margin: 0px !important;
+    background: linear-gradient(to right, #0093E9,#80D0C7);
+}
+h2{
+    top: 100px;
+    font-size: 35px;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#botao{
+    background: #d9fffe5e;
+    font-size: 35px;
+    width: 350px;
+    height: 300px;
+    border: none;
+    border-radius: 50px;
+    transition-duration: 0.1s;
+}
+#botao:active{
+    background: #7eaafc;
+    width: 355px;
+    height: 300px;
+    border: none;
+    border-radius: 50px;
+}
+.vermelho{
+    color: red;
+}
+
+.buttonHist{
+    background-color: #E0C3FC;
+    width: 100px;
+    height: 50px;
+    margin: 7px;
+    border: none;
+    border-radius: 20px;
+    transition: 200ms;
+}
+.buttonHist:hover{
+    background-color: rgb(252, 122, 122);
+    width: 95px;
+}
+.divHist{
+    max-height: 125px;
+    width: 500px;
+    overflow:auto;
+}
