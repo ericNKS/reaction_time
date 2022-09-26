@@ -1,0 +1,51 @@
+form{
+    background: white;
+    padding: 10px;
+    width: 40vw;
+    height: 50vh;
+    border: 3px solid;
+	border-image: conic-gradient(from var(--angle), red, yellow, lime, aqua, blue, magenta, red) 1;
+    animation: 10s rotate linear infinite;
+    --angle: 0deg;
+}
+h3{
+    font-size: 50px;
+}
+input{
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 5px 0px;
+}
+input[type=submit]{
+    width: 200px;
+    background: #6dcaff;
+}
+input[type=submit]:hover{
+    background: #2bacf7;
+    transition: 1s;
+}
+input[type=text], input[type=password]{
+    width: 350px;
+    background: #00d9ff21;
+}
+.divForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.divForm h3{
+    margin: 50px;
+}
+
+@keyframes rotate {
+	to {
+		--angle: 360deg;
+	}
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
