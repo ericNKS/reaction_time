@@ -10,8 +10,8 @@
 </head>
 <body>
     
-    <div class="container">
-        <form action="login.php" method="post">
+    <div class="container" style="height: 100vh;">
+        <form action="usuario_controller.php?tratamento=login" method="post">
             <div class="divForm">
                 <h3>Login</h3>
                 <label for="email">Email:

@@ -13,10 +13,14 @@ let historico = Array();
 
 
     function addHistorico(){
+        /*
             let his = document.createElement('li');
             his.innerHTML = `${historico[i]}ms`;
             divHis.appendChild(his);
-            i++;
+            i++;*/
+            let ajax = new XMLHttpRequest();
+            ajax.open('GET','usuario_controller.php?tratamento=getHist&temp='+historico[i]);
+            ajax.send();
     }
 
 

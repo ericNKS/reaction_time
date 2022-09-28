@@ -14,15 +14,26 @@
     <title>Reaction Time</title>
 </head>
 <body>
-
-    <div class="container">
+    <nav class="navbar">
         <h2>Seu tempo de resposta</h2>
+        <a class="btn" href="usuario_controller.php?tratamento=sair">Sair</a>
+    </nav>
+    <div class="container">
         <p class="media"></p>
         <p class="conteudo">Click quando o botão estiver <span class="vermelho">VERMELHO</span></p>
         <button id="botao">Começar</button>
 
         <button class="buttonHist" onclick="media()">Média</button>
-        <div class="divHist"></div>
+        <div class="divHist">
+            <?php
+                
+            ?>
+                <ol>
+                    <li>
+
+                    </li>
+                </ol>
+        </div>
 
     </div>
     
