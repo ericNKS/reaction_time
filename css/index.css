@@ -49,3 +49,9 @@ input[type=text], input[type=password]{
     initial-value: 0deg;
     inherits: false;
 }
+a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    margin: 4px;
+}

@@ -4,9 +4,11 @@
     {
         private $id;
         private $nome;
+        private $sobreNome;
         private $email;
         private $senha;
-
+        private $tempo;
+        
         public function __get($attr)
         {
             return $this->$attr;

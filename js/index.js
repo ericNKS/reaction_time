@@ -65,7 +65,8 @@ botao.addEventListener("click",()=>{
             botao.innerHTML = "Recomeçar"
             status = 0;
             truOrFal = false;
-            addHistorico()
+            addHistorico();
+            getHist();
         }
     }
 });

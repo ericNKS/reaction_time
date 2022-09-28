@@ -10,8 +10,8 @@
 </head>
 <body>
     
-    <div class="container">
-        <form action="login.php" method="post">
+    <div class="container" style="height: 100vh;">
+        <form action="usuario_controller.php?tratamento=login" method="post">
             <div class="divForm">
                 <h3>Login</h3>
                 <label for="email">Email:
@@ -26,6 +26,7 @@
                 <?php if(isset($_GET['entrada']) && $_GET['entrada'] == 'forcado'){?>
                     <p style="color: red; font-weight: bold;">Você precisa estar logado antes de usar o site</p>
                 <?php } ?>
+                <a href="registrar.php">Registrar-se</a>
                 <input type="submit" value="Entrar">
             </div>
         </form>
