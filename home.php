@@ -24,15 +24,9 @@
         <button id="botao">Começar</button>
 
         <button class="buttonHist" onclick="media()">Média</button>
+        <button class="buttonHist" onclick="getHist()">Historico</button>
         <div class="divHist">
-            <?php
-                
-            ?>
-                <ol>
-                    <li>
-
-                    </li>
-                </ol>
+            
         </div>
 
     </div>

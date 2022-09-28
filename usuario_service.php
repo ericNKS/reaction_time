@@ -70,13 +70,30 @@
         {
             $query = '
                 INSERT INTO 
-                    tb_pontos(id_usuario, pontos)
+                    tb_pontos(id_usuario, tempo)
                 VALUES
-                    (:id_user, :pontos)
+                    (:id_user,:tempo)
             ';
             $stmt = $this->conexao->prepare($query);
-            $stmt->bindValue(':email_logado', $this->usuario->__get('email'));
-            $stmt->bindValue(':id_user', $_SESSION['id_user']);
+            $stmt->bindValue(':id_user', $this->usuario->__get('id'));
+            $stmt->bindValue(':tempo', $this->usuario->__get('tempo'));
+            $stmt->execute();
+            return "funcionou";
+        }
+
+        public function getHist()
+        {
+            $query = '
+                SELECT
+                    tempo
+                FROM
+                    tb_pontos
+                WHERE
+                    id_usuario = :id_user
+
+            ';
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':id_user', $this->usuario->__get('id'));
             $stmt->execute();
             $historico = $stmt->fetchAll(PDO::FETCH_OBJ);
             return $historico;

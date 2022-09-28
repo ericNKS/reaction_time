@@ -12,30 +12,66 @@ document.querySelector(".divHist").appendChild(divHis);
 let historico = Array();
 
 
-    function addHistorico(){
-        /*
-            let his = document.createElement('li');
-            his.innerHTML = `${historico[i]}ms`;
-            divHis.appendChild(his);
-            i++;*/
-            let ajax = new XMLHttpRequest();
-            ajax.open('GET','usuario_controller.php?tratamento=getHist&temp='+historico[i]);
+    function getHist(){
+        let ajax = new XMLHttpRequest();
+            ajax.open('GET','usuario_controller.php?tratamento=gethist');
+            ajax.onreadystatechange = ()=>{
+                if(ajax.readyState == 4 && ajax.status == 200)
+                {
+                    divHis.innerHTML = '';
+                    let histo = ajax.responseText;
+                    let objJson_hist = JSON.parse(histo);
+                    //console.log(objJson_hist);
+                    objJson_hist.forEach(historico_tempo => {
+                        let his = document.createElement('li');
+                        his.innerHTML = `${historico_tempo.tempo}ms`;
+                        divHis.appendChild(his);
+                    });
+                }
+            }
             ajax.send();
     }
+    
+    function addHistorico(){
+            let ajax = new XMLHttpRequest();
+            ajax.open('GET','usuario_controller.php?tratamento=sethist&temp='+historico[i]);
+            ajax.onreadystatechange = ()=>{
+                if(ajax.readyState == 4 && ajax.status == 200)
+                {
+                    i++;
+                }
+            }
+            ajax.send();
 
+    }
+    
 
    function media(){
 
     mediaHist =0;
     historicoAtual = 0;
-    if(historico[0] != 0){
-        for(let i =0; i < historico.length; i++){
-            historicoAtual += historico[i];
-        }
-        mediaHist = Math.round(historicoAtual/historico.length);
-        console.log(mediaHist)
-        if(!isNaN(mediaHist)){
-            pMedia.innerHTML = `Sua media é: ${mediaHist}ms`
-        }
-    }
+
+    let ajax = new XMLHttpRequest();
+            ajax.open('GET','usuario_controller.php?tratamento=gethist');
+            ajax.onreadystatechange = ()=>{
+                if(ajax.readyState == 4 && ajax.status == 200)
+                {
+                    divHis.innerHTML = '';
+                    let histo = ajax.responseText;
+                    let objJson_hist = JSON.parse(histo);
+                    //console.log(objJson_hist);
+                    if(historico[0] != 0)
+                    {
+                        objJson_hist.forEach(historico_tempo => {
+                            historicoAtual += historico_tempo.tempo;
+                        });
+                        mediaHist = Math.round(historicoAtual/objJson_hist.length);
+                        console.log(mediaHist);
+                        if(!isNaN(mediaHist)){
+                            pMedia.innerHTML = `Sua media é de ${mediaHist}ms`
+                        }
+                    }
+                }
+            }
+            ajax.send();
    }

@@ -4,8 +4,10 @@
     require 'usuario.php';
     require 'conexao.php';
 
-    
-    if($_GET['tratamento'] == 'login')
+
+    $tratamento = isset($_GET['tratamento']) ? $_GET['tratamento'] : $tratamento;
+
+    if($tratamento == 'login')
     {
         $conexao = new Conexao();
         $usuario = new Usuario();
@@ -14,7 +16,6 @@
         $usuario_service = new UsuarioService($conexao,$usuario);
         if($usuario_service->verificaLogin()){
             $_SESSION['autenticacao'] = true;
-            $_SESSION['email'] = $usuario->__get('email');
             header('Location:home.php');
         }else{
             header('Location:index.php?login=ERROR');
@@ -22,7 +23,7 @@
         }
     }
 
-    if($_GET['tratamento'] == 'registrar')
+    if($tratamento == 'registrar')
     {
         if($_POST['senha'] != $_POST['confirmSenha'])
         {
@@ -40,21 +41,33 @@
 
 
     }
-    if($_GET['tratamento'] == 'sair')
+    if($tratamento == 'sair')
     {
         session_destroy();
         header('Location:index.php');
 
     }
-    if($_GET['tratamento'] == 'getHist')
+
+    if($tratamento == 'sethist')
     {
         $conexao = new Conexao();
         $usuario = new Usuario();
-        $usuario->__set('tempo',$_POST['temp'])->__set('email', $_SESSION['email']);
+        $usuario->__set('tempo',$_GET['temp'])->__set('id', $_SESSION['id_user']);
 
         $usuario_service = new UsuarioService($conexao,$usuario);
         $usuario_service->setHist();
+    }
 
+    if($tratamento == 'gethist')
+    {
+        $conexao = new Conexao();
+        $usuario = new Usuario();
+        $usuario->__set('id', $_SESSION['id_user']);
+
+        $usuario_service = new UsuarioService($conexao,$usuario);
+        $hist = $usuario_service->getHist();
+        echo(json_encode($hist));
+        
     }
 
 ?>

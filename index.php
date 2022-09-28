@@ -26,6 +26,7 @@
                 <?php if(isset($_GET['entrada']) && $_GET['entrada'] == 'forcado'){?>
                     <p style="color: red; font-weight: bold;">Você precisa estar logado antes de usar o site</p>
                 <?php } ?>
+                <a href="registrar.php">Registrar-se</a>
                 <input type="submit" value="Entrar">
             </div>
         </form>
